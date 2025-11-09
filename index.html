@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quick Survey</title>
+
+  <!-- Bootstrap CSS (CDN) -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+
+  <!-- External CSS (majority of rules live here) -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Tiny internal tweak (minority of rules) -->
+  <style>
+    /* Example ID selector tweak kept internal (smallest portion) */
+    #intro strong { color: #0d6efd; }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- Header -->
+  <header class="py-5 bg-white border-bottom" id="top">
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-12 col-md-8">
+          <h1 class="display-6 mb-1">We value your feedback</h1>
+          <p id="intro" class="text-muted mb-0">
+            This quick survey helps us improve our services. It takes under 2 minutes.
+            <strong>Thank you!</strong>
+          </p>
+        </div>
+        <div class="col-12 col-md-4 text-md-end">
+          <a href="#survey" class="btn btn-primary">Start Survey</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <section class="col-12 col-lg-8">
+          <div class="card shadow-sm survey-card">
+            <div class="card-body p-4 p-md-5">
+              <h2 class="h4 mb-4">Survey Form</h2>
+
+              <form id="survey" class="needs-validation" novalidate>
+                <!-- Name -->
+                <div class="mb-3">
+                  <label for="name" class="form-label">Full Name</label>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" required />
+                  <div class="invalid-feedback">Please enter your name.</div>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="you@example.com" required />
+                  <div class="invalid-feedback">Please enter a valid email.</div>
+                </div>
+
+                <!-- Experience (checkboxes: multiple choice) -->
+                <div class="mb-3">
+                  <span class="form-label d-block mb-2">What did you like? (Select all that apply)</span>
+                  <div class="row row-cols-1 row-cols-sm-2 g-2">
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="opt-ui" name="likes" value="UI" />
+                        <label class="form-check-label" for="opt-ui">User Interface</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="opt-speed" name="likes" value="Speed" />
+                        <label class="form-check-label" for="opt-speed">Speed/Performance</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="opt-support" name="likes" value="Support" />
+                        <label class="form-check-label" for="opt-support">Customer Support</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="opt-features" name="likes" value="Features" />
+                        <label class="form-check-label" for="opt-features">Features</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Recommendation (radio example optional) -->
+                <div class="mb-3">
+                  <span class="form-label d-block mb-2">Would you recommend us?</span>
+                  <div class="d-flex gap-3 flex-wrap">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="recommend" id="rec-yes" value="Yes" required />
+                      <label class="form-check-label" for="rec-yes">Yes</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="recommend" id="rec-no" value="No" />
+                      <label class="form-check-label" for="rec-no">No</label>
+                    </div>
+                  </div>
+                  <div class="invalid-feedback d-block" style="display:none;"></div>
+                </div>
+
+                <!-- Comments -->
+                <div class="mb-4">
+                  <label for="comments" class="form-label">Comments (optional)</label>
+                  <textarea id="comments" name="comments" class="form-control" rows="4"
+                    placeholder="Share any suggestions or feedback"></textarea>
+                </div>
+
+                <!-- Submit -->
+                <div class="d-grid d-sm-flex justify-content-sm-end">
+                  <button type="submit" class="btn btn-primary px-4">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-4 text-center text-muted small">
+    © <span id="year"></span> Quick Survey
+  </footer>
+
+  <!-- Bootstrap Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Minimal client-side validation -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    (() => {
+      const form = document.getElementById('survey');
+      form.addEventListener('submit', (e) => {
+        if (!form.checkValidity()) {
+          e.preventDefault();
+          e.stopPropagation();
+        } else {
+          e.preventDefault();
+          alert('Thanks! Your response has been recorded (demo).');
+          form.reset();
+        }
+        form.classList.add('was-validated');
+      });
+    })();
+  </script>
+</body>
+</html>
