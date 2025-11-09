@@ -1,0 +1,63 @@
+/* Majority of styling lives here */
+
+/* ---- Tag selectors ---- */
+body {
+  line-height: 1.7;
+}
+h1, h2 {
+  letter-spacing: 0.2px;
+}
+p {
+  margin-bottom: 0.9rem;
+}
+
+/* ---- Class selectors ---- */
+.survey-card {
+  border: 0;
+  border-radius: 1rem;
+}
+.survey-card .card-body {
+  /* subtle elevation that complements Bootstrap */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border-radius: 1rem;
+}
+
+/* Make form controls a bit softer */
+.form-control {
+  border-radius: 0.75rem;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.form-control:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.2rem rgba(13,110,253,.15);
+  outline: 0;
+}
+
+/* Checkbox & radio spacing */
+.form-check {
+  padding-left: 1.75rem;
+}
+.form-check-input {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* Buttons polish */
+.btn {
+  border-radius: 0.75rem;
+}
+
+/* ---- ID selectors ---- */
+#top {
+  scroll-margin-top: 80px; /* if linked to from within page */
+}
+#survey {
+  scroll-margin-top: 90px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .survey-card .card-body {
+    padding: 1.25rem !important;
+  }
+}
